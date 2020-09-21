@@ -29,11 +29,14 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "st",      NULL,     NULL,           0,         0,          1,          -1,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         1,          0,           1,        -1 }, /* xev */
+	/* class     instance             title               tags mask  isfloating  isterminal  noswallow  monitor */
+	{ "st",      NULL,                NULL,               0,         0,          1,          -1,        -1 },
+	{ NULL,      NULL,                "Event Tester",     0,         1,          0,           1,        -1 }, /* xev */
+	{ NULL,      "jetbrains-studio",  NULL,               0,         1,          0,           1,        -1 },
+	{ NULL,      "audio_mixer",       NULL,               0,         1,          0,           1,        -1 },
+	{ NULL,      "session_options",   NULL,               0,         1,          0,           1,        -1 },
+	{ NULL,      "session_options",   NULL,               0,         1,          0,           1,        -1 },
+	{ NULL,      "name_screenshot",   NULL,               0,         1,          0,           1,        -1 },
 };
 
 /* layout(s) */
@@ -43,9 +46,10 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "+",        tile },    /* first entry is default */
+	{ "|",        tile },    /* first entry is default */
 	{ "~",        NULL },    /* no layout function means floating behavior */
-	{ "^",        monocle },
+	{ "[]",       monocle },
+	{ "-",        bstackhoriz },
 };
 
 /* key definitions */
@@ -73,12 +77,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_minus,  setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_equal,  setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_minus,  setmfact,       {.f = -0.025} },
+	{ MODKEY,                       XK_equal,  setmfact,       {.f = +0.025} },
+	{ MODKEY|ShiftMask,             XK_minus,  setcfact,       {.f = -0.25} },
+	{ MODKEY|ShiftMask,             XK_equal,  setcfact,       {.f = +0.25} },
 	{ MODKEY,                       XK_space,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
