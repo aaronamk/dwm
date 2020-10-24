@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -31,12 +31,14 @@ static const Rule rules[] = {
 	 */
 	/* class     instance             title               tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "st",      NULL,                NULL,               0,         0,          1,          -1,        -1 },
+	{ "Sakura",  NULL,                NULL,               0,         0,          1,          -1,        -1 },
+	{ NULL,      NULL,                "music_browser",    0,         1,          0,           1,        -1 },
+	{ NULL,      NULL,                "audio_mixer",      0,         1,          0,           1,        -1 },
+	{ NULL,      NULL,                "session_options",  0,         1,          0,           1,        -1 },
+	{ NULL,      NULL,                "name_screenshot",  0,         1,          0,           1,        -1 },
+	{ NULL,      NULL,                "clipboard",        0,         1,          0,           1,        -1 },
 	{ NULL,      NULL,                "Event Tester",     0,         1,          0,           1,        -1 }, /* xev */
 	{ NULL,      "jetbrains-studio",  NULL,               0,         1,          0,           1,        -1 },
-	{ NULL,      "audio_mixer",       NULL,               0,         1,          0,           1,        -1 },
-	{ NULL,      "session_options",   NULL,               0,         1,          0,           1,        -1 },
-	{ NULL,      "session_options",   NULL,               0,         1,          0,           1,        -1 },
-	{ NULL,      "name_screenshot",   NULL,               0,         1,          0,           1,        -1 },
 };
 
 /* layout(s) */
