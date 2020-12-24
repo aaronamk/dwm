@@ -1,3 +1,5 @@
+Author: aaronamk
+
 diff --git a/dwm.c b/dwm.c
 index 4465af1..b200cfd 100644
 --- a/dwm.c
