@@ -86,7 +86,7 @@ static Key keys[] = {
 	{ SUPER,                        XK_q,      killclient,           {0} },
 	{ SUPER,                        XK_t,      setlayout,            {.v = &layouts[0]} },
 	{ SUPER|ShiftMask,              XK_t,      setlayout,            {.v = &layouts[3]} },
-	{ SUPER,                        XK_f,      togglefullscreen,     {0} },
+	{ SUPER,                        XK_f,      setlayout,            {2} },
 	{ SUPER|ShiftMask,              XK_f,      togglefakefullscreen, {0} },
 	{ SUPER|ShiftMask,              XK_space,  togglefloating,       {0} },
 	{ SUPER,                        XK_0,      view,                 {.ui = ~0 } },
