@@ -29,15 +29,16 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance             title               tags mask  iscentered  isfloating  isterminal  noswallow  monitor */
-	{ "st",      NULL,                NULL,               0,         1,          0,          1,          -1,        -1 },
-	{ "Sakura",  NULL,                NULL,               0,         1,          0,          1,          -1,        -1 },
-	{ NULL,      NULL,                "music_browser",    0,         1,          1,          0,           1,        -1 },
-	{ NULL,      NULL,                "audio_mixer",      0,         1,          1,          0,           1,        -1 },
-	{ NULL,      NULL,                "session_options",  0,         1,          1,          0,           1,        -1 },
-	{ NULL,      NULL,                "name_screenshot",  0,         1,          1,          0,           1,        -1 },
-	{ NULL,      NULL,                "clipboard",        0,         1,          1,          0,           1,        -1 },
-	{ NULL,      NULL,                "Event Tester",     0,         0,          1,          0,           1,        -1 }, /* xev */
+	/* class     instance             title               tags mask  iscentered  isfloating  isterminal  noswallow  monitor  scratch key */
+	{ "st",      NULL,                NULL,               0,         1,          0,          1,          -1,        -1,      0 },
+	{ "Sakura",  NULL,                NULL,               0,         1,          0,          1,          -1,        -1,      0 },
+	{ NULL,      NULL,                "scratch_term",     0,         1,          1,          1,          -1,        -1,     't'},
+	{ NULL,      NULL,                "music_browser",    0,         1,          1,          0,           1,        -1,      0 },
+	{ NULL,      NULL,                "audio_mixer",      0,         1,          1,          0,           1,        -1,      0 },
+	{ NULL,      NULL,                "session_options",  0,         1,          1,          0,           1,        -1,      0 },
+	{ NULL,      NULL,                "name_screenshot",  0,         1,          1,          0,           1,        -1,      0 },
+	{ NULL,      NULL,                "clipboard",        0,         1,          1,          0,           1,        -1,      0 },
+	{ NULL,      NULL,                "Event Tester",     0,         0,          1,          0,           1,        -1,      0 }, /* xev */
 };
 
 /* layout(s) */
@@ -69,6 +70,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
+/*First arg only serves to match against key in rules*/
+static const char *scratch_term[] = {"t", "st", "-g", "130x50", "-t", "scratch_term", "-e", "vifm", NULL};
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ SUPER,                        XK_p,      spawn,                {.v = dmenucmd } },
@@ -86,9 +90,10 @@ static Key keys[] = {
 	{ SUPER,                        XK_q,      killclient,           {0} },
 	{ SUPER,                        XK_t,      setlayout,            {.v = &layouts[0]} },
 	{ SUPER|ShiftMask,              XK_t,      setlayout,            {.v = &layouts[3]} },
-	{ SUPER,                        XK_f,      togglefullscreen,     {0} },
+	{ SUPER,                        XK_f,      setlayout,            {.v = &layouts[2]} },
 	{ SUPER|ShiftMask,              XK_f,      togglefakefullscreen, {0} },
 	{ SUPER|ShiftMask,              XK_space,  togglefloating,       {0} },
+	{ SUPER,                        XK_h,      togglescratch,        {.v = scratch_term } },
 	{ SUPER,                        XK_0,      view,                 {.ui = ~0 } },
 	{ SUPER|ShiftMask,              XK_0,      tag,                  {.ui = ~0 } },
 	{ SUPER,                        XK_l,      focusmon,             {.i = +1 } },
