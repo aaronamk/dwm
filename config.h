@@ -94,6 +94,8 @@ static Key keys[] = {
 	{ SUPER,                        XK_b,           togglebar,            {0} },
 	{ SUPER,                        XK_j,           focusstack,           {.i = +1 } },
 	{ SUPER,                        XK_k,           focusstack,           {.i = -1 } },
+	{ SUPER|ShiftMask,              XK_j,           pushdown,             {0} },
+	{ SUPER|ShiftMask,              XK_k,           pushup,               {0} },
 	{ SUPER,                        XK_i,           incnmaster,           {.i = +1 } },
 	{ SUPER,                        XK_d,           incnmaster,           {.i = -1 } },
 	{ SUPER,                        XK_minus,       setmfact,             {.f = -0.025} },
