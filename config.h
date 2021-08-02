@@ -66,6 +66,7 @@ static const Layout layouts[] = {
 	{ "~",        NULL },    /* no layout function means floating behavior */
 	{ "[]",       monocle },
 	{ "-",        bstackhoriz },
+	{ "||",       centeredmaster },
 };
 
 /* key definitions */
@@ -107,6 +108,7 @@ static Key keys[] = {
 	{ SUPER,                        XK_q,           killclient,           {0} },
 	{ SUPER,                        XK_t,           setlayout,            {.v = &layouts[0]} },
 	{ SUPER|ShiftMask,              XK_t,           setlayout,            {.v = &layouts[3]} },
+	{ SUPER,                        XK_c,           setlayout,            {.v = &layouts[4]} },
 	{ SUPER,                        XK_f,           setlayout,            {.v = &layouts[2]} },
 	{ SUPER|ShiftMask,              XK_f,           togglefakefullscreen, {0} },
 	{ SUPER|ShiftMask,              XK_space,       togglefloating,       {0} },
@@ -116,6 +118,8 @@ static Key keys[] = {
 	{ SUPER|ShiftMask,              XK_0,           tag,                  {.ui = ~0 } },
 	{ SUPER,                        XK_l,           focusmon,             {.i = +1 } },
 	{ SUPER|ShiftMask,              XK_l,           tagmon,               {.i = +1 } },
+	{ SUPER,                        XK_period,      shiftview,            {.i = +1 } },
+	{ SUPER,                        XK_comma,       shiftview,            {.i = -1 } },
 	TAGKEYS(                        XK_1,                                 0)
 	TAGKEYS(                        XK_2,                                 1)
 	TAGKEYS(                        XK_3,                                 2)
