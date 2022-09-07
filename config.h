@@ -90,45 +90,46 @@ static const char *scratch_term[] = {"h", "st", "-g", "130x50", "-t", "scratch_t
 static const char *music_browser[] = {"m", "st", "-g", "130x50", "-t", "music_browser", "-e", "ncmpcpp", NULL};
 
 static Key keys[] = {
-	/* modifier                     key             function        argument */
-	{ SUPER,                        XK_p,           spawn,                {.v = dmenucmd } },
-	{ SUPER,                        XK_b,           togglebar,            {0} },
-	{ SUPER,                        XK_j,           focusstack,           {.i = +1 } },
-	{ SUPER,                        XK_k,           focusstack,           {.i = -1 } },
-	{ SUPER|ShiftMask,              XK_j,           pushdown,             {0} },
-	{ SUPER|ShiftMask,              XK_k,           pushup,               {0} },
-	{ SUPER,                        XK_i,           incnmaster,           {.i = +1 } },
-	{ SUPER,                        XK_d,           incnmaster,           {.i = -1 } },
-	{ SUPER,                        XK_minus,       setmfact,             {.f = -0.025} },
-	{ SUPER,                        XK_equal,       setmfact,             {.f = +0.025} },
-	{ SUPER|ShiftMask,              XK_minus,       setcfact,             {.f = -0.25} },
-	{ SUPER|ShiftMask,              XK_equal,       setcfact,             {.f = +0.25} },
-	{ SUPER,                        XK_space,       zoom,                 {0} },
-	{ SUPER,                        XK_Tab,         view,                 {0} },
-	{ SUPER,                        XK_q,           killclient,           {0} },
-	{ SUPER,                        XK_t,           setlayout,            {.v = &layouts[0]} },
-	{ SUPER|ShiftMask,              XK_t,           setlayout,            {.v = &layouts[3]} },
-	{ SUPER,                        XK_c,           setlayout,            {.v = &layouts[4]} },
-	{ SUPER,                        XK_f,           setlayout,            {.v = &layouts[2]} },
-	{ SUPER|ShiftMask,              XK_f,           togglefakefullscreen, {0} },
-	{ SUPER|ShiftMask,              XK_space,       togglefloating,       {0} },
-	{ SUPER,                        XK_h,           togglescratch,        {.v = scratch_term } },
+	/* modifier                     key                function              argument */
+	{ SUPER,                        XK_d,              spawn,                {.v = dmenucmd } },
+	{ SUPER,                        XK_b,              togglebar,            {0} },
+	{ SUPER,                        XK_j,              focusstack,           {.i = +1 } },
+	{ SUPER,                        XK_k,              focusstack,           {.i = -1 } },
+	{ SUPER|ShiftMask,              XK_j,              pushdown,             {0} },
+	{ SUPER|ShiftMask,              XK_k,              pushup,               {0} },
+	{ SUPER,                        XK_i,              incnmaster,           {.i = +1 } },
+	{ SUPER,                        XK_u,              incnmaster,           {.i = -1 } },
+	{ SUPER,                        XK_minus,          setmfact,             {.f = -0.025} },
+	{ SUPER,                        XK_equal,          setmfact,             {.f = +0.025} },
+	{ SUPER|ShiftMask,              XK_minus,          setcfact,             {.f = -0.25} },
+	{ SUPER|ShiftMask,              XK_equal,          setcfact,             {.f = +0.25} },
+	{ SUPER,                        XK_space,          zoom,                 {0} },
+	{ SUPER,                        XK_Tab,            view,                 {0} },
+	{ SUPER,                        XK_q,              killclient,           {0} },
+	{ SUPER,                        XK_t,              setlayout,            {.v = &layouts[0]} },
+	{ SUPER|ShiftMask,              XK_t,              setlayout,            {.v = &layouts[3]} },
+	{ SUPER,                        XK_c,              setlayout,            {.v = &layouts[4]} },
+	{ SUPER,                        XK_f,              setlayout,            {.v = &layouts[2]} },
+	{ SUPER|ShiftMask,              XK_f,              togglefakefullscreen, {0} },
+	{ SUPER|ControlMask,            XK_f,              togglefullscr,        {0} },
+	{ SUPER|ShiftMask,              XK_space,          togglefloating,       {0} },
+	{ SUPER,                        XK_h,              togglescratch,        {.v = scratch_term } },
 	{ SUPER,                        XF86XK_AudioPlay,  togglescratch,        {.v = music_browser } },
-	{ SUPER,                        XK_0,           view,                 {.ui = ~0 } },
-	{ SUPER|ShiftMask,              XK_0,           tag,                  {.ui = ~0 } },
-	{ SUPER,                        XK_l,           focusmon,             {.i = +1 } },
-	{ SUPER|ShiftMask,              XK_l,           tagmon,               {.i = +1 } },
-	{ SUPER,                        XK_period,      shiftview,            {.i = +1 } },
-	{ SUPER,                        XK_comma,       shiftview,            {.i = -1 } },
-	TAGKEYS(                        XK_1,                                 0)
-	TAGKEYS(                        XK_2,                                 1)
-	TAGKEYS(                        XK_3,                                 2)
-	TAGKEYS(                        XK_4,                                 3)
-	TAGKEYS(                        XK_5,                                 4)
-	TAGKEYS(                        XK_6,                                 5)
-	TAGKEYS(                        XK_7,                                 6)
-	TAGKEYS(                        XK_8,                                 7)
-	TAGKEYS(                        XK_9,                                 8)
+	{ SUPER,                        XK_0,              view,                 {.ui = ~0 } },
+	{ SUPER|ShiftMask,              XK_0,              tag,                  {.ui = ~0 } },
+	{ SUPER,                        XK_l,              focusmon,             {.i = +1 } },
+	{ SUPER|ShiftMask,              XK_l,              tagmon,               {.i = +1 } },
+	{ SUPER,                        XK_period,         shiftview,            {.i = +1 } },
+	{ SUPER,                        XK_comma,          shiftview,            {.i = -1 } },
+	TAGKEYS(                        XK_1,                                    0)
+	TAGKEYS(                        XK_2,                                    1)
+	TAGKEYS(                        XK_3,                                    2)
+	TAGKEYS(                        XK_4,                                    3)
+	TAGKEYS(                        XK_5,                                    4)
+	TAGKEYS(                        XK_6,                                    5)
+	TAGKEYS(                        XK_7,                                    6)
+	TAGKEYS(                        XK_8,                                    7)
+	TAGKEYS(                        XK_9,                                    8)
 };
 
 /* button definitions */
